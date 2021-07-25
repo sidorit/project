@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Page Header-->
+<header>
+    <div class="mypage-header">
+        <h1><a style="color: white;" href="{% url 'mypage' %}">My Page</a></h1>
+    </div>
+</header>
+<!-- Main Content-->
+
+<main class="modify-background">
+    <div style="width: 20%;">
+        <form class="py-sm-5" action="{% url 'profile_modify' %}" method="POST">
+            <p style="text-align: center; font-size: 15px; font-weight: 700;">{{error}}</p>
+            <br>
+            {% csrf_token %}
+            
+            <div class="fw-bolder modify-form">
+                <label for="username">사용자 이메일 입력</label>
+                <input type="text" class="form-control" id="useremail" name="useremail" value="{{user.useremail}}">
+            </div>
+            <div class="fw-bolder modify-form">
+                <label for="username">학교</label>
+                <input type="text" class="form-control" id="school" name="school" value="{{user.school}}">
+            </div>
+            <div class="fw-bolder modify-form">
+                <label for="username">전공</label>
+                <input type="text" class="form-control" id="major" name="major" value="{{user.major}}">
+            </div>
+            <div class="fw-bolder modify-form">
+                <label for="username">학년</label>
+                <input type="text" class="form-control" id="grade" name="grade" value="{{user.grade}}">
+            </div>
+            <div class="fw-bolder modify-form">
+                <label for="username">핸드폰 번호</label>
+                <input type="text" class="form-control" id="phone" name="phone" value="{{user.phone}}">
+            </div>
+            <div style="text-align: center;">
+                <button type="submit" class="btn btn-primary" style="margin-top:4rem; margin-bottom: 10rem;">수정하기</button>
+            </div>
+            
+        </form>
+        
+    </div>
+</main>
+
+
+
+{% endblock %}

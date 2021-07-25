@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<header class="mypage-header">
+  <div style="padding-left:20px; padding-top: 2rem;"> 
+  <h1 style="color: aliceblue; font-weight: bolder; padding-bottom: 5px; margin: 0;">자기소개서</h1>    
+  <h5 style="color: aliceblue; font-weight: bolder; padding: 0; margin: 0;">&nbsp;RECRUIT 2022  10th</h5>     
+  </div>
+</header>
+
+<body>
+    <!-- Main Content-->
+<div class="container px-4 px-lg-5">
+  <div class="gx-4 gx-lg-5 justify-content-center">
+      <div class="col-md-13 col-lg-30 col-xl-30" style="padding: 6rem;">
+        <!-- apply form-->
+        <form action="{% url 'submit' %}" method="POST">
+          {% csrf_token %}
+          <div class="">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>1. 이름을 입력해주세요.</h4></label>
+              {% if user %}
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="name" rows="3"  readonly>{{user}}</textarea>
+              {% else %}
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="name" rows="3" ></textarea>
+            {% endif %}
+          </div>
+          <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">
+                <h4>2. 자신을 한 줄로 소개해주세요.</h4></label>
+              <textarea style="border-radius: 0;"class="form-control" id="exampleFormControlTextarea1" name="intro_line" rows="3" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>3. 지원동기는 무엇입니까?</h4></label>
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="motivation" rows="10" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>4. 만들어보고 싶은 서비스에 대해 설명해주세요.</h4></label>
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="page" rows="10" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>5. 위 4번에서 설명한 서비스를 만들고 싶은 이유가 무엇입니까? </h4></label>
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="why" rows="10" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>6. 팀 프로젝트 경험이 있습니까? </h4></label>
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name="project_experience" rows="10" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>7. 팀 활동을 하면서 겪었던 갈등에 대해 설명해주세요.</h4></label>
+            <textarea style="border-radius: 0;" class="form-control" id="exampleFormControlTextarea1" name ='conflict' rows="10" ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">
+              <h4>8. 갈등이 발생했을때 어떻게 대처하십니까?</h4></label>
+            <textarea style="border-radius: 0;"class="form-control" id="exampleFormControlTextarea1" name="solution" rows="10" ></textarea>
+          </div>         
+          <!-- Pager-->
+          <div style="text-align: center; padding: 3rem;">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

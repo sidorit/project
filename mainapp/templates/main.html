@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<header class="main-header">
+    <div>
+        <h1 class="likelion-head">멋쟁이 사자처럼</h1>
+    </div> 
+    
+    <div class="site-heading">
+        <span>2022 10th Recruit</span>
+    </div>
+        
+    <div style="padding-top: 5rem;">
+        {% if temp != 1%}
+        <a class="justify-content-end mb-4 btn btn-primary text-uppercase" href="{%url 'submit' %}">지원하기 →</a>
+        {% else %}
+        <a class="justify-content-end mb-4 btn btn-primary text-uppercase" href="{%url 'login' %}">지원하기 →</a>
+        {% endif %}
+    </div>
+</header>
+<!-- Main Content-->
+
+<h1 class="hackyourlife">HACK YOUR<br>
+    <span style="color: #FF9436;">LIFE</span>
+</h1>
+<div class="main-content">
+    <div class="main-content1">
+        <h1 style="font-size: 3rem; font-weight: bolder;">멋쟁이 사자처럼이란?</h1>
+        <div class="post-subtitle">
+            “내 아이디어를 내 손으로 실현한다 HACK YOUR LIFE"
+            <br>멋사는 2013년부터 시작된 전국 48개 대학교 연합 프로그래밍 교육 및 창업 동아리입니다.
+            <br>온라인 기반의 강의와 오프라인 활동이 함께 이루어지며 Python과 Django를 이용하여
+            <br>웹 서비스 개발을 합니다.
+        </div>
+    </div>    
+</div>
+<hr style="height: 5px;">
+<div class="main-content2">
+    <div class="post-preview">
+        <h3 class="post-title">Activity</h3>
+        <div class="post-subtitle">
+            <p>매주 2회 웹프로그래밍 기술 교육을 진행합니다.
+            <br>
+            <br>HTML & CSS (프론트엔드)
+            <br>Python & Django (백엔드)
+            <br>GitHub
+            <br>
+            <br>아이디어톤, 해커톤 등을 통해 배운 내용을 바탕으로 실제 아이디어를 구현하여 직접 웹서비스를 만듭니다.</p>               
+        </div>
+    </div>
+
+    <div class="post-preview">
+        <br>
+        <h3 class="post-title">Schedule</h3>
+        <div class="post-subtitle">
+            <br>4월~6월 : 팀 빌딩 및 아이디어 스케치
+            <br>7월~9월 : 9주 코딩교육 및 아이디어 구현
+            <br>9월 : 해커톤
+            <br>10월 ~ 11월 : 아이디어 구현 및 서비스 완성
+            <br>12월 : 상위 팀 VC 앞에서 피칭
+            <br>(※ 추후 활동 일정은 변동가능 )
+            </div>
+    </div>
+
+
+        <div class="post-preview">
+            <br>
+            <h3 class="post-title">Requirements</h3>
+            <div class="post-subtitle">
+                <br>개인 노트북 있으신 분
+                <br>전공자는 기초적인 웹 지식이 있으신 분
+                <br>1년동안 성실하게 활동할 수 있는 분
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-center" style="padding-right: 5rem; padding-bottom: 5rem;">
+            {% if temp != 1%}
+        <a class="justify-content-end mb-4 btn btn-primary text-uppercase" href="{%url 'submit' %}">지원하기 →</a>
+        {% else %}
+        <a class="justify-content-end mb-4 btn btn-primary text-uppercase" href="{%url 'login' %}">지원하기 →</a>
+        {% endif %}
+        </div>
+</div>
+
+  
+{% endblock %}

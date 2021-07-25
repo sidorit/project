@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Page Header-->
+<header class="mypage-header"></header>
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div style="text-align: center; padding-top: 5rem; padding-bottom: 5rem;">
+                    <h1></h1>
+                    <br>
+                    <br>
+                    <span style="font-weight: bolder; font-size: 30px;">지원서 수정이 완료되었습니다!</span>
+                    <br>
+                    <br>
+                    <br>
+                    <a href="{% url 'main' %}" style="font-size: 15px;">메인으로></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

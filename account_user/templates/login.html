@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load socialaccount %}
+
+{% block content %}
+
+<div style="background: rgba(0, 0, 0, 0.2);">
+    <div class="d-md-flex justify-content-md-center">
+        <form class="loginform-background" style="margin-top: 5rem;margin-bottom: 10rem;" method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <h1>Login</h1>
+            <div class="login_sns" style="padding: 20px;display: flex;">
+                <li style="list-style: none;padding: 0px 15px;"><a href="{% provider_login_url 'google' %}" style="text-decoration: none;color: black;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;padding: 10px;border-radius: 50px;background: white;font-size: 20px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);"><i class="fab fa-google"></i></a></li>
+                <!-- <li style="list-style: none;padding: 0px 15px;"><a href="" style="text-decoration: none;color: black;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;padding: 10px;border-radius: 50px;background: white;font-size: 20px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);"><i class="fab fa-facebook-f"></i></a></li> -->
+                <li style="list-style: none;padding: 0px 15px;"><a href="{% provider_login_url 'naver' %}" style="text-decoration: none;color: black;width: 50px;height: 50px;display: flex;align-items: center;justify-content: center;padding: 10px;border-radius: 50px;background: white;font-size: 20px;box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4), -3px -3px 5px rgba(0, 0, 0, 0.1);"><i class="fab fa-neos"></i></a></li>
+                </div>
+            <div>
+                {{error}}
+            </div>
+            <div style="width: 70%; padding-right: 15px; margin-top: 4rem; margin-bottom: 4rem;">
+                <div class="">
+                    <p class="fw-bold">Email</p>
+                    <input type="text" class="form-control" id="useremail" name="useremail" placeholder="이메일">
+                </div>
+                <div>
+                    <p class="fw-bold">Password</p>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="비밀번호">
+                </div>                
+            </div>
+                
+            <div style="display:flex; flex-direction: column; justify-content: center; text-align: center; margin-bottom: 4rem;">
+                
+                
+                
+                <button class="login-button" type="submit" value="submit" style="font-weight: bolder;">로그인 하기</button>
+                <br>
+                <p style="font-size: 15px; font-weight: 500;">아직 회원이 아니신가요?</p>
+                <a style="font-weight: bolder;" href="{% url 'signup' %}">회원가입</a>
+
+            </div>   
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+<!-- <div style="margin :100px">   forms.py를 이용한 로그인 구현
+
+        <form method="post" class="post-form" action="#">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.email.id_for_label }}">이메일</label>
+                <input class="form-control" type="email" class="form-control" name="{{ form.email.id_for_label }}" id="{{ form.email.id_for_label }}"
+                       placeholder="email">
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">학번</label>
+                <input type="password" class="form-control" name="{{ form.password.id_for_label }}" id="{{ form.password.id_for_label }}"
+                placeholder="password" >
+            </div>
+            <button type="submit" class="btn btn-primary">로그인</button>
+        </form>
+    </div> -->

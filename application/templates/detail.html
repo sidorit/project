@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+.content {
+		max-width:1300;
+		margin: auto;
+		padding:10px;
+		font-size: 20px;
+	}
+	.board_for_read {
+		width: 100%;
+		background-color:#f3f3f3;
+	}
+	#title {
+		height: 32px;
+		width: 100%;
+		border-radius: 0.5em;
+		border: none;
+		font-family: inherit;
+		font-size: inherit;
+		background: none;
+	}
+	textarea {
+		width: 100%;
+		font-family: inherit;
+		font-size: 100%;
+		resize: none;
+		border-radius: 0.5em;
+		border: 0px;
+		background: #fff;
+		height: auto;
+		border: 2px solid #dddddd;
+	}
+	.td_title {
+		background-color: #e9e9e9;
+		width: 20%;
+		text-align: center;
+		font-weight:bold;
+		border-bottom: 1px solid #8C8C8C;
+	}
+	.td_title2 {
+		border-bottom: 1px solid #8C8C8C;
+	}
+	.detail-button{
+		width: 50px;
+		height:30px;
+		font-weight: bold;
+		font-size:15px;
+		border-radius:3rem;
+		border: 1px;
+		color: white;
+		background-color: rgb(255, 154, 60);
+	}
+	.detail-button:hover{
+		background-color: rgb(255, 124, 47);
+	}
+</style>
+
+<!-- Page Header-->
+<header class="mypage-header">
+    <div style="padding-top: 2rem;"> 
+		<h1 style="color: aliceblue; font-weight: bolder; padding-bottom: 5px; margin: 0;">{{app.username}}님 지원서</h1>
+	</div>
+</header>
+
+<div class="container px-4 px-lg-5">
+  <div class="row gx-4 gx-lg-5 justify-content-center">
+      	<div class="col-md-13 col-lg-30 col-xl-30">
+			<div class="content">
+				<br>
+				<br>
+				<form action="{% url 'detail' app.id %}" method="POST">
+					{% csrf_token %}
+				<tr>
+					<span style="font-weight: bolder;">&nbsp;지원결과:&nbsp;</span>
+					<select style="border-radius: 3rem; font-size: 18px;" id="state" name="state">
+						<option value="지원 완료">지원 완료</option>
+						<option value="관리자 읽음">관리자 읽음</option>
+						<option value="서류 탈락">서류 탈락</option>
+						<option value="서류 합격">서류 합격</option>
+						<option value="면접 탈락">면접 탈락</option>
+						<option value="면접 합격">면접 합격</option>
+					</select>
+					<button class="detail-button" type="submit">확인</button>
+				</tr>
+				</form>
+				<br>
+				<table class="board_for_read">
+					<tbody>						
+						<tr>
+							<td class="td_title" style="border-top: 8px solid gray;" >이름</td>
+							<td class="td_title2" style="padding:10px; border-top: 8px solid gray;">
+								<input type="text" name="title" id="title" value="{{ app.username }}" readonly/>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">작성일자</td>
+							<td class="td_title2" style="padding:10px;">
+								<input type="text" name="title" id="title" value="{{ app.update_time }}" readonly/>
+					
+						</tr>
+						<tr>
+							<td class="td_title">한 줄 소개</td>
+							<td class="td_title2" style="padding:10px;  height: 32px;" >
+								<textarea name="detail" id="detail" rows="1" readonly>{{app.one_introduction}}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">지원동기</td>
+							<td class="td_title2" style="padding:10px; ">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.motive }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">만들고 싶은 서비스</td>
+							<td class="td_title2" style="padding:10px; ">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.make_site }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">만들고 싶은 이유</td>
+							<td class="td_title2" style="padding:10px; ">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.why }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">팀 프로젝트 경험</td>
+							<td class="td_title2" style="padding:10px; ">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.project_experience }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">갈등 경험</td>
+							<td class="td_title2" style="padding:10px; 	">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.conflict }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_title">갈등 해결 방법</td>
+							<td class="td_title2" style="padding:10px;">
+								<textarea name="detail" id="detail" rows="10" readonly>{{ app.solution }}</textarea>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="padding: 3rem; text-align: center;">
+					<a href="{% url 'index' %}"><button class="btn btn-primary">목록으로</button></a>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+{% endblock %}

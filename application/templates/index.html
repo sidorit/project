@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+    thead {
+        background-color:#cecece;
+    }
+    .content {
+        max-width:1300px;
+        margin: auto;
+        padding:5px;
+    }
+    .header {
+        text-align: center;
+        font-weight:bolder;
+        font-size: 20px;
+    }
+    .td-index{
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+    }
+    .board {
+        width: 100%;
+        font-size: large;
+    }
+    .even_bgcolor {
+        background-color:#f3f3f3;
+    }
+</style>
+
+<!-- Page Header-->
+<header class="mypage-header">
+    <div style="padding-left:20px; padding-top: 2rem;"> 
+		<h1 style="color: aliceblue; font-weight: bolder; padding-bottom: 5px; margin: 0;">Board</h1>    
+		<h5 style="color: aliceblue; font-weight: bolder; padding: 0; margin: 0;">&nbsp;RECRUIT 2022  10th</h5>     
+	  </div>
+</header>
+
+<body>
+    <div class="content">
+        <div class="d-grid gap-2 d-md-flex" style="padding-top: 3rem; padding-bottom:2rem; font-size: 15px;" >
+            <select style="border-radius: 2rem;" id="sort-select" onchange="location = this.value;">
+                <option class="sort-new_date" value="/">정렬순서</option>
+                <option class="sort-submit_date" value="?sort=submit_date">지원날짜순</option>
+                <option class="sort-name" value="?sort=name">이름순</option>
+                <option class="sort-new_date" value="?sort=new_date">최신순</option>
+            </select>
+        </div>
+        <table class="board">
+            <thead>
+                <tr class="header">
+                    <th class="th-index" style="width:10%;">No.</th>
+                    <th class="th-index" style="width:20%;">이름</th>
+                    <th class="th-index" style="width:50%">한 줄 소개</th>
+                    <th class="th-index" style="width:10%">지원일자</th>
+                    <th class="th-index" style="width:20%">상태</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if Board_List %}
+                {% for data in Board_List %}
+                <tr class="{% if forloop.counter|divisibleby:2 %}even_bgcolor{% endif %}">                 
+                    <td class="td-index">
+                        {% if data.state != "지원 완료" %}
+                            ✔
+                        {% endif %}
+                            {{ forloop.counter }}</td>
+                    <td class="td-index">
+                        <a href="{% url 'detail' data.id %}">
+                            {{ data.username }}
+                        </a>
+                    </td>
+                    <td class="td-index">
+                        <a href="{% url 'detail' data.id %}">
+                            {{ data.one_introduction}}
+                        </a>
+                    </td>
+                    <td class="td-index">{{ data.update_time|date:'Y-m-d' }}</td>
+                    <td class="td-index">{{ data.state }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td>작성된 게시글이 없습니다.</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+{% endblock %}

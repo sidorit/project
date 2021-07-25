@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<!-- Page Header-->
+<header>
+    <div class="mypage-header">
+        <h1><a style="color: white;" href="{% url 'mypage' %}">My Page</a></h1>
+    </div>
+</header>
+<!-- Main Content-->
+
+
+<main>
+    <div class="container">
+        <div class="row justify-content-center py-5rem" >
+            <div class="col-md-4">
+                <p class="profile-text">Profile</p>
+                <br>
+                {% if user %}
+                <p class="mypage-list" style="padding-top: 0;"><span>이름:</span>&nbsp;&nbsp;{{user.username}}</p>
+                <hr class="my-auto" />
+                <p class="mypage-list"><span>이메일:</span>&nbsp;&nbsp;{{user.useremail}}</p>
+                <hr class="my-auto" />
+                <p class="mypage-list"><span>학교:</span>&nbsp;&nbsp;{{user.school}}</p>
+                <hr class="my-auto" />
+                <p class="mypage-list"><span>학과:</span>&nbsp;&nbsp;{{user.major}}</p>
+                <hr class="my-auto" />
+                <p class="mypage-list"><span>학년:</span>&nbsp;&nbsp;{{user.grade}}</p>
+                <hr class="my-auto" />
+                <p class="mypage-list"><span>전화번호:</span>&nbsp;&nbsp;{{user.phone}}</p>
+                <hr class="my-auto" />
+                {% else %}
+                <p><span style="color: rgb(41, 41, 41);">이름:</span>&nbsp;&nbsp;{{social_user}}</p>
+                {% endif %}
+            </div>
+            <div style="text-align: center; padding: 3rem;" >
+                <a class="btn btn-primary text-uppercase" href="{% url 'profile_modify'%}">정보수정</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
